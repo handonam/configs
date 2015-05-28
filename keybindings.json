@@ -1,0 +1,6 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  { "key": "cmd+e",           "command": "editor.action.deleteLines",
+                                     "when": "editorTextFocus" },
+  { "key": "ctrl+shift+`",           "command": "workbench.action.quickOpen" }
+]
