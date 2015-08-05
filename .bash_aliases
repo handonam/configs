@@ -1,4 +1,4 @@
-# takelessons directories
+# primary working directory
 function tl() { echo "Need to setup default directory in your alias" }
 
 # postgres
