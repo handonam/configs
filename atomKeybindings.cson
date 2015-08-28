@@ -1,0 +1,14 @@
+'.platform-darwin atom-text-editor':
+  'alt-down': 'editor:duplicate-lines'
+  'alt-up': 'editor:duplicate-lines'
+  'cmd-e': 'editor:delete-line'
+  'cmd-u u': 'editor:upper-case'
+  'cmd-u l': 'editor:lower-case'
+  'alt-ctrl-up': 'editor:move-line-up'
+  'alt-ctrl-down': 'editor:move-line-down'
+  'alt-ctrl-left': 'editor:outdent-selected-rows'
+  'alt-ctrl-right': 'editor:indent-selected-rows'
+'.platform-linux atom-text-editor':
+  'ctrl-e': 'editor:delete-line'
+  'ctrl-shift-down': 'editor:duplicate-lines'
+  'ctrl-shift-up': 'editor:duplicate-lines'
