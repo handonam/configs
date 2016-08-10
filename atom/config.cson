@@ -1,0 +1,26 @@
+"*":
+  "exception-reporting":
+    userId: "b89aae9c-e1d1-5dd7-5a82-89ad8f3c19a8"
+  welcome:
+    showOnStartup: false
+  core:
+    disabledPackages: [
+      "symbols-view"
+      "atom-ctags"
+    ]   
+    excludeVcsIgnoredPaths: false
+  editor:
+    invisibles: {}
+    showInvisibles: true
+    preferredLineLength: 110 
+    fontSize: 10
+  minimap:
+    plugins:
+      "git-diff": true
+  "git-diff":
+    showIconsInEditorGutter: true
+  "tree-view":
+    hideVcsIgnoredFiles: true
+".angular.html.text":
+  editor:
+    preferredLineLength: 110 
