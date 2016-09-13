@@ -1,5 +1,5 @@
 # primary working directory
-function tl() { echo "Need to setup default directory in your alias" }
+function tl() { echo "Need to setup default directory in your alias"; }
 
 # postgres
 #alias psql="psql op cfladmin"
@@ -18,6 +18,8 @@ function gst() { git status "$@"; }
 function ga() { git add "$@"; }
 function gd() { git diff "$@"; }
 function gl() { git log --graph --stat "$@"; }
+function gm() { git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d; }
+function gitmod()  { git status --porcelain | sed 's/^ M / /'; }
 
 # sudo fix for passing alias to sudo
 alias sudo="sudo "
