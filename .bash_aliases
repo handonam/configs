@@ -1,26 +1,16 @@
 # primary working directory
-function tl() { echo "Need to setup default directory in your alias"; }
+function tl() { cd ~/Workspace/"$@"; }
 
-# postgres
-#alias psql="psql op cfladmin"
-function psq() { psql "$1" cfladmin; }
-function op() 
-{ 
-  if [ "$1" ];
-  then
-    psql op_"$1" cfladmin;
-  else
-    psql op cfladmin
-  fi
-}
+
 # git commands
 function gst() { git status "$@"; }
 function ga() { git add "$@"; }
-function gd() { git diff "$@"; }
-function gl() { git log --graph --stat "$@"; }
+function gd() { git diff --color-words="[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+" "$@"; }
+function gl() { echo "git log --graph --stat "; git log --graph --stat "$@"; }
 function gm() { git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d; }
 function gitmod()  { git status --porcelain | sed 's/^ M / /'; }
-
+alias ls="ls --color=auto $@"
+alias ll="ls -lah"
 # sudo fix for passing alias to sudo
 alias sudo="sudo "
 
