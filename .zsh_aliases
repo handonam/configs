@@ -1,4 +1,5 @@
 function tl() { cd ~/Workspace/"$@"; }
+function punk() { cd ~/Workspace/popup-notification-kit/"$@"; }
 
 alias ls="ls -G $@"
 alias ll="ls -Glah"
@@ -32,3 +33,51 @@ function gd() { git diff --color-words="[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+"
 function gl() { echo "git log --graph --stat "; git log --graph --stat "$@"; }
 function gm() { git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d; }
 function gitmod()  { git status --porcelain | sed 's/^ M / /'; }
+function getUser() { curl --request POST \
+  --url https://experimentassignment-e2e.api.intuit.com/api/v3/assignments/businessUnits/CG/users/"$@" \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --cookie 'qbn.ptc.ticket=V1-153-E3pl95q6yy240w43gaj8nq; qbn.ptc.authid=9059977971021231; qbn.ptc.agentid=9059977971021231; qbn.ptc.parentid=50000003' \
+  --data '{
+  "assignmentFilter": {
+    "applications": [
+      "TurboTax_NavUtility"
+    ]
+  },
+  "context": {
+    "productId": "5016",
+    "isTTUReferrer": "false"
+  },
+  "options": {
+    "allowDynamicWLBL": false,
+    "allowRemoteAssgmnts": true,
+    "existingPersistentAssgmntsOnly": true,
+    "includePersistentAssgmnts": true,
+    "includeRemoteTaggedIds": false,
+    "runningPersistentExptsOnly": true
+  }
+}'; }
+function getUserProd() { curl --request POST \
+  --url https://experimentassignment.api.intuit.com/api/v4/assignments/businessUnits/CG/users/"$@" \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --cookie 'qbn.ptc.ticket=V1-153-E3pl95q6yy240w43gaj8nq; qbn.ptc.authid=9059977971021231; qbn.ptc.agentid=9059977971021231; qbn.ptc.parentid=50000003' \
+  --data '{
+  "assignmentFilter": {
+    "applications": [
+      "TurboTax_NavUtility"
+    ]
+  },
+  "context": {
+    "productId": "5016",
+    "isTTUReferrer": "false"
+  },
+  "options": {
+    "allowDynamicWLBL": false,
+    "allowRemoteAssgmnts": true,
+    "existingPersistentAssgmntsOnly": true,
+    "includePersistentAssgmnts": true,
+    "includeRemoteTaggedIds": false,
+    "runningPersistentExptsOnly": true
+  }
+}'; }
