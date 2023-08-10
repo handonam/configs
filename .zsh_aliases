@@ -81,3 +81,96 @@ function getUserProd() { curl --request POST \
     "runningPersistentExptsOnly": true
   }
 }'; }
+
+
+function startTmux() {
+
+  if [ "$1" != "" ] 
+    then workDirectory=$1
+    else workDirectory='hub-x'
+  fi
+
+  session="work"
+
+  # set up tmux
+  tmux start-server
+
+  # create a new tmux session, starting vim from a saved session in the new window
+  tmux new-session -d -s $session
+
+
+  # Select pane 1
+  tmux selectp -t 1 
+  # hub-x
+  tmux rename-window $workDirectory
+  tmux send-keys "tl $workDirectory;"
+  tmux send-keys Enter
+  tmux send-keys "code ." #start VSCode
+  tmux send-keys Enter
+
+  # Split pane 1 vertically by 50%, start yarn
+  tmux splitw -v -p 50
+  tmux send-keys "tl $workDirectory;"
+  tmux send-keys Enter
+  tmux send-keys "yarn serve"
+  tmux send-keys Enter
+
+  # Select pane 1
+  tmux selectp -t 1
+
+  # create a new window called bpytop
+  tmux new-window -t $session:99 -n byptop # use `C-a '` or `C-a w` to get there.
+  tmux send-keys "bpytop;"
+  tmux send-keys Enter
+
+  # return to main vim window
+  tmux select-window -t $session:1
+
+  # Finished setup, attach to the tmux session!
+  tmux attach-session -t $session
+}
+
+
+function workSession() {
+  if [ "$1" != "" ] 
+    then workDirectory=$1
+    else workDirectory='hub-x'
+  fi
+
+  session="work"
+  tmux new-window -t $session -n $workDirectory
+
+  # Select pane 1
+  tmux selectp -t 1 
+  # hub-x
+  tmux rename-window $workDirectory
+  tmux send-keys "tl $workDirectory;"
+  tmux send-keys Enter
+  tmux send-keys "code ." #start VSCode
+  tmux send-keys Enter
+
+  # Split pane 1 vertically by 50%, start yarn
+  tmux splitw -v -p 50
+  tmux send-keys "tl $workDirectory;"
+  tmux send-keys Enter
+  tmux send-keys "yarn serve --no-prelint"
+  tmux send-keys Enter
+}
+
+
+function startHomelab() {
+  session2="homelab"
+  tmux new-session -d -s $session2
+  tmux select-window -t $session2:1
+
+  # Select pane 1
+  tmux rename-window -t $session2:1 'Homelab'
+  tmux send-keys -t $session2:1 "ssh -p22122 Handonas@192.168.50.170"
+  tmux send-keys -t $session2:1 Enter
+
+  # Split pane 1 vertically by 50%, start OPNsense
+  tmux splitw -t $session2:1 -v -p 50
+  tmux send-keys -t $session2:1 "ssh -p2059 root@192.168.50.250"
+  tmux send-keys -t $session2:1 Enter
+  tmux attach-session -t $session2
+}

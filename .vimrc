@@ -30,3 +30,11 @@ set t_CO=256
 
 ""Unindent
 imap <S-tab> <C-o><<
+
+"" make sure to install python3-pip, and install vim-nox
+"" (check with vim --version | grep '+python' to ensure you have it)
+set rtp+=/usr/local/lib/python3.11/site-packages/powerline/bindings/vim
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set backspace=indent,eol,start

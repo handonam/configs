@@ -1,21 +1,10 @@
 source ~/.zsh_aliases
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-function powerline_precmd() {
-    PS1="$(powerline-shell --shell zsh $?)"
-}
 
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-fi
+# Install with `pip install powerline-status`
+POWERLINE_ROOT="/usr/local/lib/python3.11/site-packages/powerline/"
+# Starts Powerline
+. $POWERLINE_ROOT/bindings/zsh/powerline.zsh
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
@@ -81,3 +70,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
