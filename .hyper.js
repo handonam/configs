@@ -27,7 +27,7 @@ module.exports = {
     letterSpacing: 0,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(248,28,229,.8)',
+    cursorColor: 'rgba(248,28,229,1)',
 
     // terminal text color under BLOCK cursor
     cursorAccentColor: '#000',
@@ -43,7 +43,7 @@ module.exports = {
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: '#000000EE',
+    backgroundColor: '#08080799',
 
     // terminal selection color
     selectionColor: 'rgba(248,28,229,0.3)',
@@ -77,7 +77,7 @@ module.exports = {
       red: '#C51E14',
       green: '#1DC121',
       yellow: '#C7C329',
-      blue: '#0A2FC4',
+      blue: '#1E7AD4',
       magenta: '#C839C5',
       cyan: '#20C5C6',
       white: '#C7C7C7',
@@ -85,7 +85,7 @@ module.exports = {
       lightRed: '#FD6F6B',
       lightGreen: '#67F86F',
       lightYellow: '#FFFA72',
-      lightBlue: '#6A76FB',
+      lightBlue: '#00A2ff',
       lightMagenta: '#FD7CFC',
       lightCyan: '#68FDFE',
       lightWhite: '#FFFFFF',
@@ -152,7 +152,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyperterm-summon"],
+plugins: ["hyperterm-summon"], 
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
